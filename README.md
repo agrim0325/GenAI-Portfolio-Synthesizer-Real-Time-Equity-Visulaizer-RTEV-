@@ -1,5 +1,10 @@
 # 📈 LLM Portfolio Manager
 
+**Credits & Project Vision**  
+*Original Engine Built by: [Vishvesh Trivedi](https://www.linkedin.com/in/vishvesh-trivedi) (OSS Architect | AI/ML Automation)*  
+*Adapted & Expanded by: Agrim Agarwal*  
+*Agrim Agarwal is actively developing this project to build something new and improved upon the original foundation, bringing live real-time analysis and dedicated Indian market support to the framework.*
+
 An automated, end-of-day **stock screener** that blends classic quantitative
 technical analysis, news sentiment, and **LLM reasoning** (NVIDIA NIM) to produce
 short-term **BUY / WATCH / NO PICK** decisions — with stop zones, price targets,
