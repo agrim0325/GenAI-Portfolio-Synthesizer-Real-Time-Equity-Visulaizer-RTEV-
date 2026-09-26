@@ -19,7 +19,7 @@ OK: Universe loaded:
 
 OK: All functions loaded
 DAILY STOCK SCREENER v6.2
-   Time:   2026-09-26 01:27
+   Time:   2026-09-26 05:36
    Folder: /home/runner/work/GenAI-Portfolio-Synthesizer-Real-Time-Equity-Visulaizer-RTEV-/GenAI-Portfolio-Synthesizer-Real-Time-Equity-Visulaizer-RTEV-/StockScreener
    Stocks: 903 | ETFs: 26
 =================================================================
@@ -28,34 +28,4 @@ note: No config_overrides.json — using defaults
 
   Alpaca GET HTTP 401: {"message": "unauthorized."}
 
-PORTFOLIO: $101,803.38 (+1,803.38 / +1.8% vs $100,000 starting)
-Cash: $87,133.76  |  Positions: 1/5  |  Deployed: 14%  |  Idle: 86%
-Sector exposure: Healthcare: 14%
-Realized P&L: $+1,828.32 all-time  |  no closed trades this week
-  GILD [Healthcare]: 98sh @ $149.5798 → $149.69000244140625 (+11 / +0.1%) | 4d | Stop $147.96 | Target $158.9998
-
-Step 1/8: Updating past results + exit signals...
-
-Step 2/8: Market context...
-
-Market context...
-  VIX:  14.87 (p8.1) -> LOW (p8 risk-on) (1.1x)
-  QQQ:  $741.1 | BULLISH (+4.20% vs 50MA)
-  SPY today: -0.08%
-  10Y yield: 5.18% (+0.35%)  DXY: 101.04 (-0.25%)  Nikkei: +0.76%
-  Futures:  ES=+0.50%  NQ=+0.50%
-
-Step 3/8: Fetching all data (parallel)...
-
-Batch downloading 926 tickers (12 chunked API calls)...
-  Downloaded: 926/926 tickers
-  Alpaca GET HTTP 401: {"message": "unauthorized."}
-
-Report saved → /home/runner/work/GenAI-Portfolio-Synthesizer-Real-Time-Equity-Visulaizer-RTEV-/GenAI-Portfolio-Synthesizer-Real-Time-Equity-Visulaizer-RTEV-/StockScreener/report_latest.html
-
-────────────────────────────────────────────────────────────
-  CONFIRMED PICKS: 0 evaluated yet | 10 pending
-  WATCH LIST: 0 evaluated yet | 20 pending
-  Full report → /home/runner/work/GenAI-Portfolio-Synthesizer-Real-Time-Equity-Visulaizer-RTEV-/GenAI-Portfolio-Synthesizer-Real-Time-Equity-Visulaizer-RTEV-/StockScreener/report_latest.html
-────────────────────────────────────────────────────────────
-  Alerts skipped — no Discord or WhatsApp channel configured
+  No completed trading session (weekend); broker state reconciled only
