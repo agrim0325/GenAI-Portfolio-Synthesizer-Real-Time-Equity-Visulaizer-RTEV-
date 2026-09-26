@@ -39,7 +39,7 @@
       "high_watermark": 152.6699981689453,
       "atr_at_entry": 3.14,
       "filled_at_open": true,
-      "quote_stale": false,
+      "quote_stale": true,
       "cost_basis_basis": "broker_confirmed_fill",
       "broker_order_id": "ded5428d-4f95-4735-8d88-4ca38df70737",
       "broker_partial_fill": false,
@@ -47,7 +47,8 @@
       "quote_date": "2026-09-24",
       "last_evaluated_session": "2026-09-24",
       "earnings_days_away": 35,
-      "indicator_exit_note": ""
+      "indicator_exit_note": "",
+      "update_error": "quote gap: missing/invalid exact session 2026-09-25"
     }
   ],
   "closed_trades": [
@@ -388,7 +389,9 @@
       "amount_usd": 21783.44,
       "shares": 25,
       "hold_sessions": 10,
-      "status": "PENDING"
+      "status": "PENDING",
+      "quote_stale": true,
+      "update_error": "no valid exact-session opening bar"
     }
   ],
   "processed_sessions": [
@@ -636,6 +639,7 @@
     "2026-09-21",
     "2026-09-22",
     "2026-09-23",
-    "2026-09-24"
+    "2026-09-24",
+    "2026-09-25"
   ]
 }
