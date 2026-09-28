@@ -19,7 +19,7 @@ OK: Universe loaded:
 
 OK: All functions loaded
 DAILY STOCK SCREENER v6.2
-   Time:   2026-09-28 01:33
+   Time:   2026-09-28 05:57
    Folder: /home/runner/work/GenAI-Portfolio-Synthesizer-Real-Time-Equity-Visulaizer-RTEV-/GenAI-Portfolio-Synthesizer-Real-Time-Equity-Visulaizer-RTEV-/StockScreener
    Stocks: 903 | ETFs: 26
 =================================================================
@@ -28,4 +28,4 @@ note: No config_overrides.json — using defaults
 
   Alpaca GET HTTP 401: {"message": "unauthorized."}
 
-  No completed trading session (weekend); broker state reconciled only
+  No completed trading session (before 16:15 ET); broker state reconciled only
