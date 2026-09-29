@@ -19,7 +19,7 @@ OK: Universe loaded:
 
 OK: All functions loaded
 DAILY STOCK SCREENER v6.2
-   Time:   2026-09-29 01:03
+   Time:   2026-09-29 02:19
    Folder: /home/runner/work/GenAI-Portfolio-Synthesizer-Real-Time-Equity-Visulaizer-RTEV-/GenAI-Portfolio-Synthesizer-Real-Time-Equity-Visulaizer-RTEV-/StockScreener
    Stocks: 903 | ETFs: 26
 =================================================================
@@ -28,11 +28,11 @@ note: No config_overrides.json — using defaults
 
   Alpaca GET HTTP 401: {"message": "unauthorized."}
 
-PORTFOLIO: $101,803.38 (+1,803.38 / +1.8% vs $100,000 starting)
-Cash: $87,133.76  |  Positions: 1/5  |  Deployed: 14%  |  Idle: 86%
-Sector exposure: Healthcare: 14%
+PORTFOLIO: $102,050.34 (+2,050.34 / +2.0% vs $100,000 starting)
+Cash: $87,133.76  |  Positions: 1/5  |  Deployed: 15%  |  Idle: 85%
+Sector exposure: Healthcare: 15%
 Realized P&L: $+1,828.32 all-time  |  no closed trades this week
-  GILD [Healthcare]: 98sh @ $149.5798 → $149.69000244140625 (+11 / +0.1%) | 4d | Stop $147.96 | Target $158.9998
+  GILD [Healthcare]: 98sh @ $149.5798 → $152.2100067138672 (+258 / +1.8%) | 6d | Stop $147.96 | Target $158.9998
 
 Step 1/8: Updating past results + exit signals...
 
@@ -40,22 +40,178 @@ Step 2/8: Market context...
 
 Market context...
   VIX:  16.07 (p27.7) -> MODERATE (p28 neutral) (1.0x)
-  QQQ:  $744.5 | BULLISH (+4.57% vs 50MA)
-  SPY today: +0.54%
-  10Y yield: 5.24% (+1.08%)  DXY: 101.25 (+0.28%)  Nikkei: -1.49%
-  Futures:  ES=-0.86%  NQ=-1.25%
+  QQQ:  $736.53 | BULLISH (+3.33% vs 50MA)
+  SPY today: -0.74%
+  10Y yield: 5.24% (+1.08%)  DXY: 101.22 (+0.25%)  Nikkei: -1.10%
+  Futures:  ES=-0.88%  NQ=-1.31%
 
 Step 3/8: Fetching all data (parallel)...
 
 Batch downloading 926 tickers (12 chunked API calls)...
   Downloaded: 926/926 tickers
+  RSS feeds active: 14/16 | Headlines: 84
+  Fetching news for all 900 stocks (parallel)...
+  News found: 899/900 stocks have news today
+  Fetching fundamentals for all 899 stocks (parallel)...
+  Full fundamentals: 731/899 stocks
+  Sector ranks - Top 3: ['Healthcare', 'Energy', 'Consumer Defensive'] | Perf: Healthcare:+0.8% | Energy:+0.5% | Consumer Defensive:-0.5% | Industrials:-0.9% | Technology:-0.9%
+  Sector flows: TOP Healthcare +0.3% | BOT Communication Services -1.6%
+
+Step 4/8: Bidirectional screening...
+
+Phase 2 - Technical screening (926 tickers)...
+  Passed: 12 | Rejected: Price:0 MA:751 Vol:124 RSI:1 Liq:0 ADX:12
+
+Phase 3 - News screening all 926 stocks...
+  News rescued: 430 stocks → ['AOS', 'ABBV', 'MMM', 'ABT', 'AKAM', 'ALLE', 'AES', 'ALL', 'AMD', 'ALGN']...
+
+Phase 4 - Merging candidate pools...
+  Total candidates: 442
+    BOTH (tech+news): 7  TECHNICAL: 5  NEWS: 430
+  Earnings risk flags: ['CCL', 'FDS', 'MU']
+
+Step 4.5/8: Stream B - headline ticker extraction...
+  LLM model fallback: meta/llama-3.3-70b-instruct -> meta/llama-3.1-70b-instruct (410 model unavailable)
+  LLM attempt 1/2 failed [meta/llama-3.3-70b-instruct]: HTTPError (HTTP 410)
+  LLM model fallback: meta/llama-3.1-70b-instruct -> nvidia/llama-3.1-nemotron-70b-instruct (410 model unavailable)
+  LLM attempt 2/2 failed [meta/llama-3.1-70b-instruct]: HTTPError (HTTP 410)
+  Sector sentiment derived: 11/11 sectors from 399 stocks
+  NVIDIA paused for 120s after repeated failures
+  LLM attempt 1/1 failed [nvidia/llama-3.1-nemotron-70b-instruct]: RetryError
+  LLM model fallback: nvidia/llama-3.1-nemotron-70b-instruct -> meta/llama-3.1-405b-instruct (transient failure status=429)
+  exit:GILD: NVIDIA provider unavailable or returned empty content
+  exit:GILD: OpenRouter provider unavailable or returned empty content
+  LLM model fallback: meta/llama-3.1-405b-instruct -> mistralai/mixtral-8x22b-instruct-v0.1 (404 model unavailable)
+  LLM attempt 1/1 failed [meta/llama-3.1-405b-instruct]: HTTPError (HTTP 404)
+  exit:GILD: NVIDIA-retry provider unavailable or returned empty content
+  GILD: advisory exit check failed (NVIDIA-retry provider unavailable or returned empty content)
   Alpaca GET HTTP 401: {"message": "unauthorized."}
 
+
+Step 4.6/8: Options P/C + insider + congress + SEC 8-K...
+  Fetching options + insider data for 442 candidates...
+  Options data: 274/442 | Insider signals: 18/442
+  Congress trades: all sources unavailable (no cache)
+
+Phase 5.5 - Computing score breakdown (442 candidates)...
+  Pre-score top 5: BIIB(78=47T+31N [vader:BULLISH])  PANW(77=44T+33N [vader:BULLISH])  PM(76=41T+35N [vader:BULLISH])  WST(76=40T+36N [vader:BULLISH])  BJ(76=44T+32N [vader:BULLISH])
+
+Step 4.7/8: LLM catalyst scoring (every candidate)...
+  Catalyst scoring: 30 stocks → 5 LLM calls...
+  LLM model fallback: mistralai/mixtral-8x22b-instruct-v0.1 -> google/gemma-2-27b-it (410 model unavailable)
+  LLM attempt 1/1 failed [mistralai/mixtral-8x22b-instruct-v0.1]: HTTPError (HTTP 410)
+  catalyst_1: NVIDIA provider unavailable or returned empty content
+  catalyst_1: OpenRouter provider unavailable or returned empty content
+  NVIDIA paused for 120s after repeated failures
+  LLM model fallback: google/gemma-2-27b-it -> meta/llama-3.1-8b-instruct (404 model unavailable)
+  LLM attempt 1/1 failed [google/gemma-2-27b-it]: HTTPError (HTTP 404)
+  catalyst_1: NVIDIA-retry provider unavailable or returned empty content
+    Batch 1/5: retrying as 3+3 tickers
+  LLM model fallback: meta/llama-3.1-8b-instruct -> meta/llama-3.3-70b-instruct (410 model unavailable)
+  LLM attempt 1/1 failed [meta/llama-3.1-8b-instruct]: HTTPError (HTTP 410)
+  catalyst_1_recovery_1: NVIDIA provider unavailable or returned empty content
+  catalyst_1_recovery_1: OpenRouter provider unavailable or returned empty content
+  LLM model fallback: meta/llama-3.3-70b-instruct -> meta/llama-3.1-70b-instruct (410 model unavailable)
+  LLM attempt 1/1 failed [meta/llama-3.3-70b-instruct]: HTTPError (HTTP 410)
+  catalyst_1_recovery_1: NVIDIA-retry provider unavailable or returned empty content
+    Batch 1/5 WARNING: skipped (ValueError: NVIDIA-retry provider unavailable or returned empty content)
+  NVIDIA paused for 120s after repeated failures
+  LLM model fallback: meta/llama-3.1-70b-instruct -> nvidia/llama-3.1-nemotron-70b-instruct (410 model unavailable)
+  LLM attempt 1/1 failed [meta/llama-3.1-70b-instruct]: HTTPError (HTTP 410)
+  catalyst_2: NVIDIA provider unavailable or returned empty content
+  catalyst_2: OpenRouter provider unavailable or returned empty content
+  LLM attempt 1/1 failed [nvidia/llama-3.1-nemotron-70b-instruct]: RetryError
+  LLM model fallback: nvidia/llama-3.1-nemotron-70b-instruct -> meta/llama-3.1-405b-instruct (transient failure status=429)
+  catalyst_2: NVIDIA-retry provider unavailable or returned empty content
+    Batch 2/5: retrying as 3+3 tickers
+  LLM model fallback: meta/llama-3.1-405b-instruct -> mistralai/mixtral-8x22b-instruct-v0.1 (404 model unavailable)
+  LLM attempt 1/1 failed [meta/llama-3.1-405b-instruct]: HTTPError (HTTP 404)
+  catalyst_2_recovery_1: NVIDIA provider unavailable or returned empty content
+  catalyst_2_recovery_1: OpenRouter provider unavailable or returned empty content
+  NVIDIA paused for 120s after repeated failures
+  LLM model fallback: mistralai/mixtral-8x22b-instruct-v0.1 -> google/gemma-2-27b-it (410 model unavailable)
+  LLM attempt 1/1 failed [mistralai/mixtral-8x22b-instruct-v0.1]: HTTPError (HTTP 410)
+  catalyst_2_recovery_1: NVIDIA-retry provider unavailable or returned empty content
+    Batch 2/5 WARNING: skipped (ValueError: NVIDIA-retry provider unavailable or returned empty content)
+  Catalyst scoring paused: 2 consecutive failures; skipping remaining 3 batches
+  Catalyst scoring partial: skipped 5/5 batches due to throttling/invalid JSON
+  Catalyst scoring done — 0 auto-dropped, 30 remain
+
+Step 5/8: News intelligence (3 layers + analyst actions + SEC filings)...
+
+Phase 5 - News intelligence (30 candidates, 3 layers)...
+  LLM model fallback: google/gemma-2-27b-it -> meta/llama-3.1-8b-instruct (404 model unavailable)
+  LLM attempt 1/2 failed [google/gemma-2-27b-it]: HTTPError (HTTP 404)
+  LLM model fallback: meta/llama-3.1-8b-instruct -> meta/llama-3.3-70b-instruct (410 model unavailable)
+  LLM attempt 2/2 failed [meta/llama-3.1-8b-instruct]: HTTPError (HTTP 410)
+  news: NVIDIA provider unavailable or returned empty content
+  news: OpenRouter provider unavailable or returned empty content
+  NVIDIA paused for 120s after repeated failures
+  LLM model fallback: meta/llama-3.3-70b-instruct -> meta/llama-3.1-70b-instruct (410 model unavailable)
+  LLM attempt 1/2 failed [meta/llama-3.3-70b-instruct]: HTTPError (HTTP 410)
+  LLM model fallback: meta/llama-3.1-70b-instruct -> nvidia/llama-3.1-nemotron-70b-instruct (410 model unavailable)
+  LLM attempt 2/2 failed [meta/llama-3.1-70b-instruct]: HTTPError (HTTP 410)
+  news: NVIDIA-retry provider unavailable or returned empty content
+  News intelligence failed (ValueError: NVIDIA-retry provider unavailable or returned empty content) - neutral baseline for display only
+  News enrichment unavailable - trading continues on verified prices, verified catalysts and the final decision.
+
+Phase 5.5 - Computing score breakdown (30 candidates)...
+  Pre-score top 5: BIIB(78=47T+31N [vader:BULLISH])  PANW(77=44T+33N [vader:BULLISH])  BJ(76=44T+32N [vader:BULLISH])  PM(76=41T+35N [vader:BULLISH])  WST(76=40T+36N [vader:BULLISH])
+
+Step 5.5/8: Applying LLM config criteria...
+  30 candidates after config criteria
+  Self-calibration: 14 prior picks, 57% win rate
+
+Step 6/8: LLM final scoring...
+
+Phase 6 - NVIDIA final scoring (30 candidates)...
+  Round 1/3: Ranking 30 candidates...
+  LLM attempt 1/2 failed [nvidia/llama-3.1-nemotron-70b-instruct]: RetryError
+  LLM model fallback: nvidia/llama-3.1-nemotron-70b-instruct -> meta/llama-3.1-405b-instruct (transient failure status=429)
+  NVIDIA paused for 120s after repeated failures
+  LLM model fallback: meta/llama-3.1-405b-instruct -> mistralai/mixtral-8x22b-instruct-v0.1 (404 model unavailable)
+  LLM attempt 2/2 failed [meta/llama-3.1-405b-instruct]: HTTPError (HTTP 404)
+  Round 1 failed (RuntimeError: HTTPError (HTTP 404)) — using pre_score top 10
+  Round 2/3: Deep-diving top 10...
+  LLM model fallback: mistralai/mixtral-8x22b-instruct-v0.1 -> google/gemma-2-27b-it (410 model unavailable)
+  LLM attempt 1/2 failed [mistralai/mixtral-8x22b-instruct-v0.1]: HTTPError (HTTP 410)
+  LLM model fallback: google/gemma-2-27b-it -> meta/llama-3.1-8b-instruct (404 model unavailable)
+  LLM attempt 2/2 failed [google/gemma-2-27b-it]: HTTPError (HTTP 404)
+  Round 2 failed (RuntimeError: HTTPError (HTTP 404))
+  Round 3/3: Final deliberation...
+  NVIDIA paused for 120s after repeated failures
+  LLM model fallback: meta/llama-3.1-8b-instruct -> meta/llama-3.3-70b-instruct (410 model unavailable)
+  LLM attempt 1/2 failed [meta/llama-3.1-8b-instruct]: HTTPError (HTTP 410)
+  LLM model fallback: meta/llama-3.3-70b-instruct -> meta/llama-3.1-70b-instruct (410 model unavailable)
+  LLM attempt 2/2 failed [meta/llama-3.3-70b-instruct]: HTTPError (HTTP 410)
+  final: NVIDIA provider unavailable or returned empty content
+  final: OpenRouter provider unavailable or returned empty content
+  LLM model fallback: meta/llama-3.1-70b-instruct -> nvidia/llama-3.1-nemotron-70b-instruct (410 model unavailable)
+  LLM attempt 1/2 failed [meta/llama-3.1-70b-instruct]: HTTPError (HTTP 410)
+  NVIDIA paused for 120s after repeated failures
+  LLM attempt 2/2 failed [nvidia/llama-3.1-nemotron-70b-instruct]: RetryError
+  LLM model fallback: nvidia/llama-3.1-nemotron-70b-instruct -> meta/llama-3.1-405b-instruct (transient failure status=429)
+  final: NVIDIA-retry provider unavailable or returned empty content
+  Round 3 failed: ValueError: NVIDIA-retry provider unavailable or returned empty content
+  LLM configuration proposals disabled (self-tuning opt-in is off); no automatic tuning.
+
+█████████████████████████████████████████████████████████████████
+  TODAY'S PICK  —  Tuesday, Sep 29 2026
+█████████████████████████████████████████████████████████████████
+  Market:  VIX 16.1 (MODERATE (p28 neutral))  |  QQQ BULLISH  |  SPY -0.74%
+  Macro:   Unavailable
+─────────────────────────────────────────────────────────────────
+  NO PICK TODAY
+  Data/LLM validation incomplete; no new order queued.
+█████████████████████████████████████████████████████████████████
+  Alpaca GET HTTP 401: {"message": "unauthorized."}
+
+
+Step 8/8: Saving results...
 Report saved → /home/runner/work/GenAI-Portfolio-Synthesizer-Real-Time-Equity-Visulaizer-RTEV-/GenAI-Portfolio-Synthesizer-Real-Time-Equity-Visulaizer-RTEV-/StockScreener/report_latest.html
 
 ────────────────────────────────────────────────────────────
   CONFIRMED PICKS: 0 evaluated yet | 10 pending
-  WATCH LIST: 1/1 wins (100.0%) | avg 10d +3.0% | 19 pending
+  WATCH LIST: 1/2 wins (50.0%) | avg 10d -3.0% | 18 pending
   Full report → /home/runner/work/GenAI-Portfolio-Synthesizer-Real-Time-Equity-Visulaizer-RTEV-/GenAI-Portfolio-Synthesizer-Real-Time-Equity-Visulaizer-RTEV-/StockScreener/report_latest.html
 ────────────────────────────────────────────────────────────
-  Alerts skipped — no Discord or WhatsApp channel configured
