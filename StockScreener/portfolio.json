@@ -48,7 +48,7 @@
       "last_evaluated_session": "2026-09-24",
       "earnings_days_away": 35,
       "indicator_exit_note": "",
-      "update_error": "quote gap: missing/invalid exact session 2026-09-25"
+      "update_error": "quote gap: missing/invalid exact session 2026-09-28"
     }
   ],
   "closed_trades": [
@@ -361,39 +361,7 @@
   "sharesies_month": "2026-09",
   "sharesies_bought_usd": 4615.54,
   "sharesies_sold_usd": 4495.68,
-  "pending_orders": [
-    {
-      "source": "BOTH",
-      "reasoning": "AMD's strong technicals, high news score, and insider buying make it a compelling 1-4 week trade. The stock's recent price action and momentum indicators suggest a potential upside of 5-10% in the next 1-4 weeks.",
-      "confidence": 85,
-      "rsi": 72.7,
-      "vix": 15.67,
-      "vix_regime": "LOW (p19 risk-on)",
-      "qqq_trend": "BULLISH",
-      "earnings_days": 40,
-      "congress": "NEUTRAL",
-      "insider": "BUYING",
-      "position_size_pct": 25,
-      "tech_score": 41,
-      "news_score": 30,
-      "id": "1ad8a410-2207-4bf4-bf8d-0ced31bf5328",
-      "trade_id": "1ad8a410-2207-4bf4-bf8d-0ced31bf5328",
-      "ticker": "AMD",
-      "signal_date": "2026-09-24",
-      "execution_session": "2026-09-25",
-      "estimated_entry": 630.89,
-      "stop_distance": 40.05,
-      "target_distance": 80.1,
-      "sector": "Technology",
-      "atr": 26.7,
-      "amount_usd": 21783.44,
-      "shares": 25,
-      "hold_sessions": 10,
-      "status": "PENDING",
-      "quote_stale": true,
-      "update_error": "no valid exact-session opening bar"
-    }
-  ],
+  "pending_orders": [],
   "processed_sessions": [
     "2026-09-16",
     "2026-09-17",
@@ -631,6 +599,39 @@
       "legacy_cash_basis": 10025.74,
       "reason": "execution rejected: Order rejected: equity drawdown is at least 20%",
       "expired_date": "2026-09-17"
+    },
+    {
+      "source": "BOTH",
+      "reasoning": "AMD's strong technicals, high news score, and insider buying make it a compelling 1-4 week trade. The stock's recent price action and momentum indicators suggest a potential upside of 5-10% in the next 1-4 weeks.",
+      "confidence": 85,
+      "rsi": 72.7,
+      "vix": 15.67,
+      "vix_regime": "LOW (p19 risk-on)",
+      "qqq_trend": "BULLISH",
+      "earnings_days": 40,
+      "congress": "NEUTRAL",
+      "insider": "BUYING",
+      "position_size_pct": 25,
+      "tech_score": 41,
+      "news_score": 30,
+      "id": "1ad8a410-2207-4bf4-bf8d-0ced31bf5328",
+      "trade_id": "1ad8a410-2207-4bf4-bf8d-0ced31bf5328",
+      "ticker": "AMD",
+      "signal_date": "2026-09-24",
+      "execution_session": "2026-09-25",
+      "estimated_entry": 630.89,
+      "stop_distance": 40.05,
+      "target_distance": 80.1,
+      "sector": "Technology",
+      "atr": 26.7,
+      "amount_usd": 21783.44,
+      "shares": 25,
+      "hold_sessions": 10,
+      "status": "EXPIRED",
+      "quote_stale": true,
+      "update_error": "no valid exact-session opening bar",
+      "reason": "missed next session; never backdate a fill",
+      "expired_date": "2026-09-28"
     }
   ],
   "cash_basis": "broker_actual",
@@ -640,6 +641,7 @@
     "2026-09-22",
     "2026-09-23",
     "2026-09-24",
-    "2026-09-25"
+    "2026-09-25",
+    "2026-09-28"
   ]
 }
