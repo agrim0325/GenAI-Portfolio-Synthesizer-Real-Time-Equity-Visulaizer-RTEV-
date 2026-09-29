@@ -19,7 +19,7 @@ OK: Universe loaded:
 
 OK: All functions loaded
 DAILY STOCK SCREENER v6.2
-   Time:   2026-09-29 00:23
+   Time:   2026-09-29 01:03
    Folder: /home/runner/work/GenAI-Portfolio-Synthesizer-Real-Time-Equity-Visulaizer-RTEV-/GenAI-Portfolio-Synthesizer-Real-Time-Equity-Visulaizer-RTEV-/StockScreener
    Stocks: 903 | ETFs: 26
 =================================================================
@@ -42,8 +42,8 @@ Market context...
   VIX:  16.07 (p27.7) -> MODERATE (p28 neutral) (1.0x)
   QQQ:  $744.5 | BULLISH (+4.57% vs 50MA)
   SPY today: +0.54%
-  10Y yield: 5.24% (+1.08%)  DXY: 101.24 (+0.27%)  Nikkei: -1.12%
-  Futures:  ES=-0.72%  NQ=-0.99%
+  10Y yield: 5.24% (+1.08%)  DXY: 101.25 (+0.28%)  Nikkei: -1.49%
+  Futures:  ES=-0.86%  NQ=-1.25%
 
 Step 3/8: Fetching all data (parallel)...
 
