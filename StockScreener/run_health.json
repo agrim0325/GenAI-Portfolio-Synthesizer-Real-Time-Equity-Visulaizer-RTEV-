@@ -1,43 +1,124 @@
 {
-  "status": "healthy",
-  "providers": {},
-  "stages": {
-    "broker_sync": {
-      "success": true,
-      "detail": "1 applied, 0 failed; working=1"
+  "status": "failed",
+  "providers": {
+    "NVIDIA:meta/llama-3.3-70b-instruct": {
+      "attempts": 4,
+      "successes": 0,
+      "failures": 4
     },
+    "NVIDIA:meta/llama-3.1-70b-instruct": {
+      "attempts": 4,
+      "successes": 0,
+      "failures": 4
+    },
+    "NVIDIA:nvidia/llama-3.1-nemotron-70b-instruct": {
+      "attempts": 4,
+      "successes": 0,
+      "failures": 4
+    },
+    "NVIDIA:meta/llama-3.1-405b-instruct": {
+      "attempts": 3,
+      "successes": 0,
+      "failures": 3
+    },
+    "NVIDIA:mistralai/mixtral-8x22b-instruct-v0.1": {
+      "attempts": 3,
+      "successes": 0,
+      "failures": 3
+    },
+    "NVIDIA:google/gemma-2-27b-it": {
+      "attempts": 3,
+      "successes": 0,
+      "failures": 3
+    },
+    "NVIDIA:meta/llama-3.1-8b-instruct": {
+      "attempts": 3,
+      "successes": 0,
+      "failures": 3
+    }
+  },
+  "stages": {
     "missed_sessions": {
       "success": true,
       "detail": "no gaps"
     },
     "session": {
       "success": true,
-      "detail": "before 16:15 ET"
+      "detail": "Completed session after 16:15 ET"
     },
-    "protection": {
+    "market_context": {
       "success": true,
-      "detail": "0 placed, 0 moved, 0 without levels"
+      "detail": "Exact-session VIX available"
+    },
+    "market_data": {
+      "success": true,
+      "detail": "926/926 exact-session quotes; missing: none"
+    },
+    "fundamental_coverage": {
+      "success": true,
+      "detail": "399/442 covered; missing: FISV, HQY, HOMB, HRB, HR, IBOC, IESC, HUBS, INGR, IRT, IDA, IDCC, JEF, KBR, KNX, KNF, LEA, KRC, LAD, KRG, LIVN, LAMR, LECO, KEX, M, MANH, LNTH, MMS, MLI, MP, MAT, JAZZ, MSM, MTSI, MTDR, NBIX, MUSA, NLY, MOH, NWE, NXST, OHI, NYT; selected sector checked by order planner"
+    },
+    "exit:GILD": {
+      "success": false,
+      "detail": "NVIDIA-retry provider unavailable or returned empty content"
+    },
+    "catalyst_1": {
+      "success": false,
+      "detail": "ValueError: NVIDIA-retry provider unavailable or returned empty content"
+    },
+    "catalyst_1_recovery_1": {
+      "success": false,
+      "detail": "NVIDIA-retry provider unavailable or returned empty content"
+    },
+    "catalysts": {
+      "success": false,
+      "detail": "0/30 verified"
+    },
+    "catalyst_2": {
+      "success": false,
+      "detail": "ValueError: NVIDIA-retry provider unavailable or returned empty content"
+    },
+    "catalyst_2_recovery_1": {
+      "success": false,
+      "detail": "NVIDIA-retry provider unavailable or returned empty content"
+    },
+    "news": {
+      "success": false,
+      "detail": "ValueError: NVIDIA-retry provider unavailable or returned empty content (sentiment enrichment skipped)"
+    },
+    "round1": {
+      "success": false,
+      "detail": "RuntimeError: HTTPError (HTTP 404)"
+    },
+    "round2": {
+      "success": false,
+      "detail": "RuntimeError: HTTPError (HTTP 404)"
+    },
+    "final": {
+      "success": false,
+      "detail": "ValueError: NVIDIA-retry provider unavailable or returned empty content"
     },
     "alerts": {
       "success": true,
-      "detail": "discord: 0 sent, 0 failed; whatsapp: 0 sent, 0 failed"
+      "detail": "discord: not configured; whatsapp: not configured"
     }
   },
-  "degraded_reasons": [],
+  "degraded_reasons": [
+    "advisory_news_unavailable"
+  ],
   "label": "No successful LLM response",
-  "attempts": 0,
+  "attempts": 24,
   "successes": 0,
-  "failures": 0,
-  "date": "2026-09-25",
-  "output": "/home/runner/work/LLM-Portfolio-Manager/LLM-Portfolio-Manager/StockScreener",
-  "mode": "no_session",
-  "report": null,
+  "failures": 24,
+  "date": "2026-09-28",
+  "output": "/home/runner/work/GenAI-Portfolio-Synthesizer-Real-Time-Equity-Visulaizer-RTEV-/GenAI-Portfolio-Synthesizer-Real-Time-Equity-Visulaizer-RTEV-/StockScreener",
+  "mode": "screening",
+  "report": "/home/runner/work/GenAI-Portfolio-Synthesizer-Real-Time-Equity-Visulaizer-RTEV-/GenAI-Portfolio-Synthesizer-Real-Time-Equity-Visulaizer-RTEV-/StockScreener/report_latest.html",
   "trade_ready": false,
   "trade_blockers": [
-    "missing:market_data",
-    "missing:catalysts",
-    "missing:final"
+    "failed:catalysts",
+    "failed:final"
   ],
   "order_status": "NO ORDER",
-  "order_reason": null
+  "order_reason": "Data/LLM validation incomplete; no new order queued."
 }
